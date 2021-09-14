@@ -36,8 +36,6 @@ const Product = ({ title, price, description, category, rating, image }) => {
           />
         </div>
       </div>
-
-      <button>Add To Cart</button>
     </div>
   );
 };

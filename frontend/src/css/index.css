@@ -130,10 +130,7 @@ footer {
 
 a {
   text-decoration: none;
-}
-
-a:hover {
-  color: lightcyan;
+  color: black;
 }
 
 .row {

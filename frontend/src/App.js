@@ -1,7 +1,8 @@
 //Shree Ganesha
-
 import { useEffect, useState } from 'react';
-import Product from './components/Product';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import HomeScreen from './components/HomeScreen';
+import ProductScreen from './components/ProductScreen';
 const URL = 'https://fakestoreapi.com/products';
 
 function App() {
@@ -18,31 +19,31 @@ function App() {
   }, []);
   return (
     <>
-      <div className='grid-container'>
-        <header className='header__row'>
-          <div>
-            <a href='index.html' className='brand'>
-              GO<span className='special'>Kart</span>
-            </a>
-          </div>
-          <div>
-            <a href='cart.html'>Cart</a>
-            <a href='signin.html'>Sign In</a>
-          </div>
-        </header>
-        <main>
-          {isloading ? (
-            <h1>Loading...</h1>
-          ) : (
-            <div className='row center'>
-              {data.map((products) => (
-                <Product key={products.id} {...products} />
-              ))}
+      <Router>
+        <div className='grid-container'>
+          <header className='header__row'>
+            <div>
+              <a href='index.html' className='brand'>
+                GO<span className='special'>Kart</span>
+              </a>
             </div>
-          )}
-        </main>
-        <footer className='row center'>All rights reserved</footer>
-      </div>
+            <div>
+              <a href='cart.html'>Cart</a>
+              <a href='signin.html'>Sign In</a>
+            </div>
+          </header>
+          <main>
+            <Route path='/product/:id' exact>
+              <ProductScreen />
+            </Route>
+            <Route path='/' exact>
+              {isloading ? <h1>Loading...</h1> : <HomeScreen data={data} />}
+            </Route>
+          </main>
+
+          <footer className='row center'>All rights reserved</footer>
+        </div>
+      </Router>
     </>
   );
 }
