@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Cards = ({ title, price, description, category, rating, image }) => {
+const Product = ({ title, price, description, category, rating, image }) => {
   const classes = useStyles();
   return (
     <div className='card'>
@@ -42,4 +42,4 @@ const Cards = ({ title, price, description, category, rating, image }) => {
   );
 };
 
-export default Cards;
+export default Product;

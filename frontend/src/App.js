@@ -1,7 +1,7 @@
 //Shree Ganesha
 
 import { useEffect, useState } from 'react';
-import Cards from './Cards';
+import Product from './components/Product';
 const URL = 'https://fakestoreapi.com/products';
 
 function App() {
@@ -35,8 +35,8 @@ function App() {
             <h1>Loading...</h1>
           ) : (
             <div className='row center'>
-              {data.map((cards) => (
-                <Cards key={cards.id} {...cards} />
+              {data.map((products) => (
+                <Product key={products.id} {...products} />
               ))}
             </div>
           )}
