@@ -1,19 +1,6 @@
 import React from 'react';
-import Rating from '@material-ui/lab/Rating';
-import { makeStyles } from '@material-ui/core/styles';
-//rating component
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    '& > * + *': {
-      marginTop: theme.spacing(1),
-    },
-  },
-}));
-
+import ProductRating from './ProductRating';
 const Product = ({ title, price, description, category, rating, image }) => {
-  const classes = useStyles();
   return (
     <div className='card'>
       <div className='card__content'>
@@ -27,14 +14,7 @@ const Product = ({ title, price, description, category, rating, image }) => {
           <p>{description}</p>
           <h4>${price}</h4>
         </div>
-        <div className={classes.root} id='rating'>
-          <Rating
-            name='half-rating-read'
-            defaultValue={rating.rate}
-            precision={0.1}
-            readOnly
-          />
-        </div>
+        <ProductRating rating={rating.rate} />
       </div>
     </div>
   );

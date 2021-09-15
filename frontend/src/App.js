@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import HomeScreen from './components/HomeScreen';
 import ProductScreen from './components/ProductScreen';
 const URL = 'https://fakestoreapi.com/products';
-
 function App() {
   const [data, setData] = useState([]);
   const [isloading, setIsLoading] = useState(true);
@@ -33,9 +32,11 @@ function App() {
             </div>
           </header>
           <main>
-            <Route path='/product/:id' exact>
-              <ProductScreen />
-            </Route>
+            <Route
+              path='/product/:id'
+              render={(props) => (
+                <ProductScreen data={data} {...props} />
+              )}></Route>
             <Route path='/' exact>
               {isloading ? <h1>Loading...</h1> : <HomeScreen data={data} />}
             </Route>
