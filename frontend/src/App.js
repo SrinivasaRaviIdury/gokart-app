@@ -1,21 +1,8 @@
 //Shree Ganesha
-import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import HomeScreen from './components/HomeScreen';
 import ProductScreen from './components/ProductScreen';
-const URL = 'https://fakestoreapi.com/products';
 function App() {
-  const [data, setData] = useState([]);
-  const [isloading, setIsLoading] = useState(true);
-  const fetchData = async () => {
-    const response = await fetch(URL);
-    const data = await response.json();
-    setData(data);
-    setIsLoading(false);
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
   return (
     <>
       <Router>
@@ -32,13 +19,9 @@ function App() {
             </div>
           </header>
           <main>
-            <Route
-              path='/product/:id'
-              render={(props) => (
-                <ProductScreen data={data} {...props} />
-              )}></Route>
+            <Route path='/product/:id' component={ProductScreen}></Route>
             <Route path='/' exact>
-              {isloading ? <h1>Loading...</h1> : <HomeScreen data={data} />}
+              <HomeScreen />
             </Route>
           </main>
 
