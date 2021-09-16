@@ -1,6 +1,6 @@
 //Shree Ganesha
 import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import HomeScreen from './components/HomeScreen';
 import ProductScreen from './components/ProductScreen';
 const URL = 'https://fakestoreapi.com/products';
@@ -22,9 +22,9 @@ function App() {
         <div className='grid-container'>
           <header className='header__row'>
             <div>
-              <a href='index.html' className='brand'>
+              <Link to='/' className='brand'>
                 GO<span className='special'>Kart</span>
-              </a>
+              </Link>
             </div>
             <div>
               <a href='cart.html'>Cart</a>
