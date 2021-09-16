@@ -42,7 +42,7 @@ function App() {
             </Route>
           </main>
 
-          <footer className='row center'>All rights reserved</footer>
+          <footer className='row center footer'>All rights reserved</footer>
         </div>
       </Router>
     </>
