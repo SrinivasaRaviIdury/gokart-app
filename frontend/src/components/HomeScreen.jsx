@@ -1,32 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Product from './Product';
 import { Link } from 'react-router-dom';
 import LoadingBox from './LoadingBox';
 import MessageBox from './MessageBox';
+import { useDispatch, useSelector } from 'react-redux';
+import { listProducts } from '../actions/productActions';
 // import data from '../data';
-const URL = 'https://fakestoreapi.com/products';
 const HomeScreen = () => {
-  const [products, setProducts] = useState([]);
-  const [isloading, setIsLoading] = useState(true);
-  const [error, setError] = useState(false);
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch(URL);
-      const data = await response.json();
-      setIsLoading(false);
-      setProducts(data);
-    } catch (err) {
-      setError(err.message);
-      setIsLoading(false);
-    }
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const dispatch = useDispatch();
+  const productList = useSelector((state) => state.productList);
+  const { loading, error, products } = productList;
+  useEffect(() => dispatch(listProducts()), [dispatch]);
   return (
     <div>
-      {isloading ? (
+      {loading ? (
         <LoadingBox />
       ) : error ? (
         <MessageBox variant='danger'>{error}</MessageBox>
